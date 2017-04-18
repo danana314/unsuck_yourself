@@ -6,7 +6,7 @@ html
       i
         = msg
     - if current_user.anonymous?
-      = form_tag logins_create_path do
+      = form_tag logins_path do
         .input-group
           = text_field_tag 'email', nil, placeholder: 'E-mail', required: true
           span
