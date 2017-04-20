@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
       user.update!(login_token: nil, login_token_valid_until: 1.year.ago)
 
       self.current_user = user
-      redirect_to root_path, notice: 'Signed-in sucesfully'
+      redirect_to logins_path, notice: 'Signed-in sucesfully'
     else
       redirect_to root_path, alert: 'Invalid or expired login link'
     end
@@ -20,7 +20,7 @@ class SessionsController < ApplicationController
   # Simple sign-out. Just set current user to NullUser
   def destroy
     self.current_user = nil
-    redirect_to users_path, notice: 'Sucesfully signed-out'
+    redirect_to logins_path, notice: 'Sucesfully signed-out'
   end
 
 end
