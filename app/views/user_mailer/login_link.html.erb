@@ -2,5 +2,5 @@
 
 Click on following link to sing-into someapp.com
 <p>
-  <%= link_to 'sign-in', sessions_url(host: 'localhost:3000', token: @user.login_token) %>
+  <%= link_to 'sign-in', sessions_url(token: @user.login_token), method: :post %>
 </p>

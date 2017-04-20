@@ -1,5 +1,9 @@
 class LoginsController < ApplicationController
 
+  def index
+
+  end
+
   # This is the action triggered by login form
   #   if we don't find user by given email we create new one
   def create

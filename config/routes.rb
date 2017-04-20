@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
-	resources :logins, only: [:create]
-  resources :sessions, only: [:create, :destroy]
+	resources :logins, only: [:index, :create]
+  resources :sessions, only: [:index, :destroy]
   resources :users
 
-  root 'users#index'
+  root 'logins#index'
 end

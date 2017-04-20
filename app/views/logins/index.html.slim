@@ -1,0 +1,5 @@
+= form_tag logins_path do
+  .input-group
+    = text_field_tag 'email', nil, placeholder: 'E-mail', required: true
+    span
+      = button_tag 'Login'

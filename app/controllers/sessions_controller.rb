@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
 
 # This is the action triggered by login link
-  def create
+  def index
     # We don't sign in user with token which expired
     user = User.where(login_token: params[:token])
              .where('login_token_valid_until > ?', Time.now).first
@@ -19,8 +19,8 @@ class SessionsController < ApplicationController
 
   # Simple sign-out. Just set current user to NullUser
   def destroy
-    self.current_user = NullUser.new
-    redirect_to root_path, notice: 'Sucesfully signed-out'
+    self.current_user = nil
+    redirect_to users_path, notice: 'Sucesfully signed-out'
   end
 
 end

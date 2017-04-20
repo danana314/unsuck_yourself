@@ -17,7 +17,7 @@ table
         td
           = user.username
         td
-          - if current_user.anonymous?
+          - unless current_user
             |  Sign in to edit users
           - else
             = link_to 'Edit', edit_user_path(user)
