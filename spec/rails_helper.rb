@@ -4,7 +4,6 @@ abort("The Rails environment is not running in test! It is running in #{Rails.en
 
 require 'spec_helper'
 require 'rspec/rails'
-require 'devise'
 
 # set sidekiq jobs to run IMMEDIATELY
 require 'sidekiq/testing'

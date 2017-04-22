@@ -1,8 +1,8 @@
 FactoryGirl.define do
   factory :user do
-    email "MyString"
-    username "MyString"
+    sequence(:email) { |n| "testtest#{n}@test.com" }
+    sequence(:username) { |n| "UserName#{n}" }
     login_token "MyString"
-    login_token_valid_until "2017-04-18 02:38:31"
+    login_token_valid_until Time.now + 15.minutes
   end
 end

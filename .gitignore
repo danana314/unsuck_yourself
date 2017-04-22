@@ -20,6 +20,8 @@
 # Ignore Byebug command history file.
 .byebug_history
 
+# Ignore examples
+**/examples.txt
 
 # Ignore rubymine idea files
 **/.idea/*
