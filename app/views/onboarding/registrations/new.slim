@@ -1,7 +1,4 @@
 = simple_form_for @user, url: registrations_path do |f|
-  = f.input :email_or_username
-  /= simple_fields_for :no_model_fields do |ff|
-  /  = ff.input :email_or_username
-  /= f.input :email, label: false, input_html: {placeholder: 'E-mail'}
-  /= f.input :username, label: false, input_html: {placeholder: 'Username'}
+  = f.input :email, label: false, input_html: {placeholder: 'E-mail'}
+  = f.input :username, label: false, input_html: {placeholder: 'Username'}
   = f.submit 'Signup and send login link'
