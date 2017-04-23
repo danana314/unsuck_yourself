@@ -23,7 +23,6 @@ module UnsuckYourself
       config.autoload_paths += %W(#{path})
     end
 
-
     config.sass.preferred_syntax = :sass
 
   end

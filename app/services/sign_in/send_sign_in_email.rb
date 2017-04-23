@@ -1,6 +1,6 @@
 class SendSignInEmail < ServiceBase
 
-	def initialize (user)
+	def initialize user
 		@user = user
 	end
 
@@ -9,4 +9,5 @@ class SendSignInEmail < ServiceBase
 		             login_token_valid_until: Time.now + 15.minutes)
 		UserMailer.login_link(@user).deliver
 	end
+
 end
