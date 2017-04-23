@@ -1,0 +1,6 @@
+= simple_form_for @user, url: logins_path do |f|
+  = f.input :email_or_username, label: false, input_html: {placeholder: 'E-mail or username'}
+  /= simple_fields_for :special_fields do |ff|
+  /  = ff.input :email_or_username, label: false, input_html: {placeholder: 'E-mail or username'}
+  /= f.input :email, label: false, input_html: {placeholder: 'E-mail'}
+  = f.submit 'Send login link'

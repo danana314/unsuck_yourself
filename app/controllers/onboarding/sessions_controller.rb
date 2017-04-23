@@ -1,7 +1,7 @@
 class Onboarding::SessionsController < ApplicationController
 
 # This is the action triggered by login link
-  def index
+  def new
     # We don't sign in user with token which expired
     user = User.where(login_token: params[:token])
              .where('login_token_valid_until > ?', Time.now).first
@@ -11,16 +11,16 @@ class Onboarding::SessionsController < ApplicationController
       user.update!(login_token: nil, login_token_valid_until: 1.year.ago)
 
       self.current_user = user
-      redirect_to logins_path, notice: 'Signed-in sucesfully'
+      redirect_to users_path, notice: 'Signed-in sucesfully'
     else
-      redirect_to root_path, alert: 'Invalid or expired login link'
+      redirect_to new_login_path, alert: 'Invalid or expired login link'
     end
   end
 
   # Simple sign-out. Just set current user to NullUser
   def destroy
     self.current_user = nil
-    redirect_to logins_path, notice: 'Sucesfully signed-out'
+    redirect_to new_login_path, notice: 'Sucesfully signed-out'
   end
 
 end

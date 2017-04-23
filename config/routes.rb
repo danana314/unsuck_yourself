@@ -2,13 +2,13 @@ Rails.application.routes.draw do
 
 
 	scope module: :onboarding do
-		root to: 'logins#index'
-		resources :logins, only: [:index, :create]
-		resources :sessions, only: [:index, :destroy]
+		root to: 'logins#new'
+		resources :logins, only: [:new, :create]
+		resources :sessions, only: [:new, :destroy]
 		resources :registrations, only: [:new, :create]
 	end
 
 	resources :users
 
-  root 'logins#index'
+  root 'logins#new'
 end
