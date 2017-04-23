@@ -1,4 +1,4 @@
-class RegistrationsController < ApplicationController
+class Onboarding::RegistrationsController < ApplicationController
 	include UsersHelper
 
 	def new

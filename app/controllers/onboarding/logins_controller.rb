@@ -1,4 +1,4 @@
-class LoginsController < ApplicationController
+class Onboarding::LoginsController < ApplicationController
   include UsersHelper
 
   def index

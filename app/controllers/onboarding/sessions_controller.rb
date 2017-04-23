@@ -1,4 +1,4 @@
-class SessionsController < ApplicationController
+class Onboarding::SessionsController < ApplicationController
 
 # This is the action triggered by login link
   def index
