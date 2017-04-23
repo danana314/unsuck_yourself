@@ -10,8 +10,9 @@ class Onboarding::RegistrationsController < ApplicationController
 
 		if @user.persisted?
 			SendSignInEmail.new(@user).call
-			redirect_to root_path, notice: 'Login link sended to your email'
+			redirect_to root_path, notice: 'Sweet. Login link sent to your email.'
 		else
+			flash[:alert] = 'Invalid email or username'
 			render action: :new
 		end
 	end

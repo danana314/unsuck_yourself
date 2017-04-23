@@ -12,9 +12,9 @@ class Onboarding::LoginsController < ApplicationController
 
     if user
       SendSignInEmail.new(user).call
-      redirect_to root_path, notice: 'Login link sended to your email'
+      redirect_to root_path, notice: 'Sweet. Login link sent to your email.'
     else
-      flash[:alert] = 'Could not find you account. Have you signup up yet?'
+      flash[:alert] = 'Could not find you account. Have you signed up yet?'
       @user = User.new(email_or_username: email_or_username)
       render action: :new
     end

@@ -21,7 +21,7 @@ module FeaturesSpecHelper
     expect(ActionMailer::Base.deliveries.length).to eq (pre_event_waiting_deliveries + expected_number_sent)
   end
 
-	def get_waiting_emails
+	def get_waiting_emails_count
 		@waiting_emails = ActionMailer::Base.deliveries.length
 	end
 
