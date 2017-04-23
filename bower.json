@@ -1,0 +1,30 @@
+{
+  "name": "unsuck_yourself",
+  "version": "0.0.0",
+  "authors": [
+    "@drl"
+  ],
+  "description": "unsuck_yourself",
+  "main": "index.html",
+  "keywords": [
+    "bootstrap",
+    "jquery",
+    "rails"
+  ],
+  "license": "http://support.wrapbootstrap.com/knowledge_base/topics/usage-licenses",
+  "homepage": "http://themicon.co",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "3.3.7",
+    "fontawesome": "4.6.3",
+    "animate.css": "3.5.2",
+    "sweetalert": "1.1.3",
+    "bootstrap": "4.0"
+  }
+}
