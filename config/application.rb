@@ -11,5 +11,20 @@ module UnsuckYourself
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
+
+    config.autoload_paths += %W(#{config.root}/lib)
+    config.assets.paths << Rails.root.join('vendor', 'assets', 'bower_components')
+
+    Dir.glob("#{config.root}/app/services/**/").each do |path|
+      config.autoload_paths += %W(#{path})
+    end
+
+    Dir.glob("#{config.root}/app/jobs/**/").each do |path|
+      config.autoload_paths += %W(#{path})
+    end
+
+
+    config.sass.preferred_syntax = :sass
+
   end
 end

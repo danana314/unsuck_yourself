@@ -1,23 +1,22 @@
 class LoginsController < ApplicationController
+  include UsersHelper
 
   def index
-
+    @user = User.new
   end
 
-  # This is the action triggered by login form
-  #   if we don't find user by given email we create new one
   def create
-    user = User.find_or_create_by!(email: params[:email]) do |user|
-      user.username = nil
+
+    user = User.where(email: params[:user].dig(:email)).first
+
+    if user
+      SendSignInEmail.new(user).call
+      redirect_to root_path, notice: 'Login link sended to your email'
+    else
+      flash[:alert] = 'Could not find you account. Have you signup up yet?'
+      @user = User.new(user_params)
+      render action: :index
     end
-
-    # Here we set unique login token which is valid only for next 15 minutes
-    user.update!(login_token: SecureRandom.urlsafe_base64,
-                 login_token_valid_until: Time.now + 15.minutes)
-
-    UserMailer.login_link(user).deliver
-
-    redirect_to root_path, notice: 'Login link sended to your email'
   end
 
 end

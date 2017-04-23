@@ -22,6 +22,8 @@ class ApplicationController < ActionController::Base
   end
 
   def onboarding_controllers?
-    controller_name == :logins.to_s || controller_name == :sessions.to_s
+    controller_name == :logins.to_s ||
+      controller_name == :sessions.to_s ||
+      controller_name == :registrations.to_s
   end
 end
