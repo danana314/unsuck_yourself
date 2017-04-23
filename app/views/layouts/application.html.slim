@@ -2,10 +2,14 @@ doctype html
 html
   = render partial: 'layouts/partials/head'
   body
-    - flash.each do |key, msg|
-      i
-        = msg
+    = render partial: 'layouts/partials/navigation_primary'
 
-    = yield
+    .row
+      .col-sm-6.offset-sm-3
+        - flash.each do |key, msg|
+          i
+            = msg
+        = yield
+
 
     = render 'layouts/partials/footer'
