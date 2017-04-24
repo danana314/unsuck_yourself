@@ -6,9 +6,12 @@ Rails.application.routes.draw do
 		resources :logins, only: [:new, :create]
 		resources :sessions, only: [:new, :destroy]
 		resources :registrations, only: [:new, :create]
+		resources :tour, only: [:index]
 	end
 
-	resources :users
+	resources :home, only: [:index]
+
+	resources :users, only: [:edit, :update]
 
   root 'logins#new'
 end

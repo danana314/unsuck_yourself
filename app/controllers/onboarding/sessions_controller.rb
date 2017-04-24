@@ -10,8 +10,15 @@ class Onboarding::SessionsController < ApplicationController
       # Here we nullify login token so it can't be reused
       user.update!(login_token: nil, login_token_valid_until: 1.year.ago)
 
+      user.update_tracked_fields!(request)
+
       self.current_user = user
-      redirect_to users_path, notice: 'Signed-in successfully'
+
+      if user.sign_in_count == 1
+        redirect_to tour_index_path
+      else
+        redirect_to home_index_path, notice: 'Signed-in successfully'
+      end
     else
       redirect_to new_login_path, alert: 'Invalid or expired login link'
     end

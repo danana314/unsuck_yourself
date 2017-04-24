@@ -45,7 +45,7 @@ feature 'User onboarding:' do
 			visit new_login_path
 
 			fill_in 'user_email_or_username', with: user.email
-			click_button 'Send login link'
+			click_button 'Send sign in link'
 			expect(page).to have_content success_flash_message
 		end
 
@@ -53,7 +53,7 @@ feature 'User onboarding:' do
 			visit new_login_path
 
 			fill_in 'user_email_or_username', with: user.username
-			click_button 'Send login link'
+			click_button 'Send sign in link'
 			expect(page).to have_content success_flash_message
 		end
 
@@ -61,25 +61,25 @@ feature 'User onboarding:' do
 			visit new_login_path
 
 			fill_in 'user_email_or_username', with: 'something_that_does_not_exist'
-			click_button 'Send login link'
+			click_button 'Send sign in link'
 			expect(page).to have_content 'Could not find you account. Have you signed up yet?'
 		end
 	end
 
-	feature 'Follows link in sign in email' do
+	feature 'Follows link in sign in email for the first time' do
 		let(:user){FactoryGirl.create(:user)}
 
-		scenario 'and signs in successfully' do
+		scenario 'and signs in successfully and is brought to the onboarding tour' do
 			generated_sign_in_url = sign_in_url_from_email(user)
 			visit generated_sign_in_url
 
-			expect(page).to have_content('Signed-in successfully')
+			expect(page).to have_current_path(tour_index_path)
 		end
 
 		scenario 'and is unsuccessful if email link is followed twice' do
 			generated_sign_in_url = sign_in_url_from_email(user)
 			visit generated_sign_in_url
-			expect(page).to have_content('Signed-in successfully')
+			expect(page).to have_current_path(tour_index_path)
 			visit generated_sign_in_url
 			expect(page).to have_content('Invalid or expired login link')
 		end
@@ -92,10 +92,15 @@ feature 'User onboarding:' do
 		end
 	end
 
+	feature 'Follows link in sign in email for the second+ time' do
+		let(:user){FactoryGirl.create(:user, sign_in_count: 2)}
 
+		scenario 'and signs in successfully and is brought to the home path' do
+			generated_sign_in_url = sign_in_url_from_email(user)
+			visit generated_sign_in_url
 
-	def expect_sign_in_email_to_be_sent
-		###
+			expect(page).to have_current_path(home_index_path)
+		end
 	end
 
 end

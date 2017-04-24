@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
 
   def authenticate_user!
     if !onboarding_controllers? && !current_user
-      redirect_to root_path, alert: 'Please sign in, friend.'
+      redirect_to new_login_path, alert: 'Please sign in, friend.'
     end
   end
 
