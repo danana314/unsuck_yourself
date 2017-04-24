@@ -1,6 +1,14 @@
-= simple_form_for @user, url: logins_path do |f|
-  = f.input :email_or_username, label: false, input_html: {placeholder: 'E-mail or username'}
-  /= simple_fields_for :special_fields do |ff|
-  /  = ff.input :email_or_username, label: false, input_html: {placeholder: 'E-mail or username'}
-  /= f.input :email, label: false, input_html: {placeholder: 'E-mail'}
-  = f.submit 'Send login link'
+= render layout: 'onboarding/layout' do
+
+  h3 Sign in
+  h5
+    | Like usual, we will send you a sign in link to your email.
+
+  = simple_form_for @user, url: logins_path do |f|
+    = f.input :email_or_username, label: false, input_html: {placeholder: 'E-mail or username'}
+    = f.submit 'Send sign in link', class: 'btn btn-primary'
+
+
+  h5.pt-xl
+    = 'First time here? '
+    = link_to 'Sign up', new_registration_path

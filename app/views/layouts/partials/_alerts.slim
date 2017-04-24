@@ -1,0 +1,14 @@
+- if flash
+  - flash.each do |key, msg|
+    - if key == 'alert'
+      - alert_class = 'alert-danger'
+    - elsif key == 'notice'
+      - alert_class = 'alert-warning'
+    - else
+      - alert_class = 'alert-' + key.to_s
+
+    .alert.alert-dismissible.fade.show role="alert" class = alert_class
+      button.close[type="button" data-dismiss="alert" aria-label="Close"]
+        span[aria-hidden="true"]
+          | ×
+      = msg

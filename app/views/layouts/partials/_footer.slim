@@ -1,9 +1,9 @@
-.footer
+.footer.bt.mt
   .row
-    .col-sm-6.offset-sm-3
-      - if current_user
-        p
-          |  You are logged in as
-          = ' ' + current_user.username
-        p
+    .col-sm-10.offset-sm-1
+      .pull-left.text-muted
+        | 2017 Otter Labs
+      .pull-right
+        - if current_user
+          = "#{current_user.username}: "
           = link_to 'Sign out', session_path(current_user), method: :delete

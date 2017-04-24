@@ -5,6 +5,11 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user
 
+  # before_action :test_flash
+  # def test_flash
+  #   flash[:notice] = 'TEST!'
+  # end
+
   def current_user=(user)
     session[:user_id] = user.try(:id)
   end

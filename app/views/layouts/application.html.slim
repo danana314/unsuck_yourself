@@ -4,12 +4,9 @@ html
   body
     = render partial: 'layouts/partials/navigation_primary'
 
-    .row
-      .col-sm-6.offset-sm-3
-        - flash.each do |key, msg|
-          i
-            = msg
-        = yield
-
+    #alerts
+      = render partial: 'layouts/partials/alerts'
+    .primary-container
+      = yield
 
     = render 'layouts/partials/footer'
