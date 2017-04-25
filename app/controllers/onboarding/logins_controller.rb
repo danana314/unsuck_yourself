@@ -2,6 +2,9 @@ class Onboarding::LoginsController < ApplicationController
   include UsersHelper
 
   def new
+    if current_user
+      redirect_to home_index_path and return
+    end
     @user = User.new
   end
 

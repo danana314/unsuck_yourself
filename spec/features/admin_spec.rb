@@ -17,7 +17,7 @@ feature 'Admin dashboard' do
 			sign_in user
 			visit rails_admin_path
 			expect(page).to have_content 'That page does not exist.'
-			expect(page).to have_current_path root_path
+			expect(page).to have_current_path home_index_path
 		end
 
 	end
