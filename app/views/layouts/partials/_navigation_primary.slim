@@ -1,8 +1,9 @@
 nav
-  .row.bb.mb.pt
+  .row.bb.mb.p
     .col-sm-10.offset-sm-1.text-muted
       .pull-left
-        h3 Unsuck Yourself
+        = image_tag 'UY', class: 'brand-logo'
+        h3.hidden-xs-down Unsuck Yourself
 
       - if current_user
         .pull-right
