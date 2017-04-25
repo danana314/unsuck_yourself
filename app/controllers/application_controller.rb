@@ -1,8 +1,8 @@
 class ApplicationController < ActionController::Base
+  include ApplicationHelper
+
   protect_from_forgery with: :exception
-
   before_action :authenticate_user!
-
   helper_method :current_user
 
   # before_action :test_flash

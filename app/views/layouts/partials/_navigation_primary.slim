@@ -1,4 +1,13 @@
 nav
   .row.bb.mb.pt
     .col-sm-10.offset-sm-1.text-muted
-      h3 Unsuck Yourself
+      .pull-left
+        h3 Unsuck Yourself
+
+      - if current_user
+        .pull-right
+          h3
+            = link_to 'My Settings', edit_user_path(current_user)
+            - if current_user.admin?
+              = ' | '
+              = link_to 'Admin', rails_admin_path

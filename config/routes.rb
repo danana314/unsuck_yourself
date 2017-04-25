@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
 	scope module: :onboarding do
 		root to: 'logins#new'
@@ -14,4 +15,5 @@ Rails.application.routes.draw do
 	resources :users, only: [:edit, :update]
 
   root 'logins#new'
+
 end

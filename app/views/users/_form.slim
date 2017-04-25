@@ -1,0 +1,5 @@
+= simple_form_for @user do |f|
+  = f.input :username
+  = f.input :email
+  = link_to 'Cancel', home_index_path, class: 'btn btn-default'
+  = f.submit 'Update', class: 'btn btn-primary'

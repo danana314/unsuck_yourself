@@ -26,6 +26,9 @@ gem 'simple_form'
 
 gem "lograge"
 
+gem "rolify"
+gem 'seedbank', '~> 0.4.0'
+
 group :development do
   gem 'web-console'
   gem 'listen', '~> 3.0.5'

@@ -25,4 +25,8 @@ module FeaturesSpecHelper
 		@waiting_emails = ActionMailer::Base.deliveries.length
 	end
 
+	def sign_in user
+		page.set_rack_session(user_id: user.id)
+	end
+
 end
