@@ -19,7 +19,5 @@ feature 'Admin dashboard' do
 			expect(page).to have_content 'That page does not exist.'
 			expect(page).to have_current_path home_index_path
 		end
-
 	end
-
 end

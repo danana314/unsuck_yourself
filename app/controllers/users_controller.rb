@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  include UsersHelper
   before_action :get_user
   before_action :can_edit?
 
@@ -10,8 +9,9 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       flash[:success] = 'Cool beans. All updated.'
     else
-      render action: 'edit'
+      #
     end
+    render action: 'edit'
   end
 
   private
@@ -27,4 +27,7 @@ class UsersController < ApplicationController
     end
   end
 
+  def user_params
+    params.require(:user).permit(:username)
+  end
 end
