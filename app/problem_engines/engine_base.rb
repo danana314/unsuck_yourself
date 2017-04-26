@@ -1,4 +1,4 @@
-class Engine::Base
+class EngineBase
 
 	def initialize user
 		@user = user

@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :skill_level do
-    user
-	  problem_type 'basic'
+	  category 'basic'
 	  level 0
+	  user
   end
 end

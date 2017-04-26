@@ -12,8 +12,8 @@ RSpec.describe Problem, type: :model do
   end
 
   describe 'Validations' do
-    it {should validate_presence_of(:problem_type)}
-    it {should validate_presence_of(:skill_level)}
+    it {should validate_presence_of(:category)}
+    it {should validate_presence_of(:difficulty)}
     it {should validate_presence_of(:problem)}
     it {should validate_presence_of(:correct_answer)}
     it {should validate_presence_of(:workout)}

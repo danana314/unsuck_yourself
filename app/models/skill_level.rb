@@ -2,6 +2,6 @@ class SkillLevel < ApplicationRecord
 
 	belongs_to :user
 
-	validates_presence_of :problem_type, :level, :user
+	validates_presence_of :category, :level, :user
 
 end

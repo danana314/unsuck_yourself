@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Engine::Vanilla do
+describe VanillaEngine do
 
 	let(:user){FactoryGirl.create(:user)}
 	let(:workout){FactoryGirl.create(:workout, user: user)}

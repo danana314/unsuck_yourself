@@ -12,7 +12,7 @@ RSpec.describe SkillLevel, type: :model do
   end
 
   describe 'Validations' do
-    it {should validate_presence_of(:problem_type)}
+    it {should validate_presence_of(:category)}
     it {should validate_presence_of(:level)}
     it {should validate_presence_of(:user)}
   end
