@@ -1,4 +1,4 @@
-class Engine::Basic < ServiceBase
+class Engine::Vanilla < Engine::Base
 
 	def initialize user
 		@user = user

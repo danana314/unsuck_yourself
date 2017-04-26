@@ -19,6 +19,10 @@ module UnsuckYourself
       config.autoload_paths += %W(#{path})
     end
 
+    Dir.glob("#{config.root}/app/problem_engines/**/").each do |path|
+      config.autoload_paths += %W(#{path})
+    end
+
     Dir.glob("#{config.root}/app/jobs/**/").each do |path|
       config.autoload_paths += %W(#{path})
     end
