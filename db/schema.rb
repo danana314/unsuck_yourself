@@ -10,10 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170425052748) do
+ActiveRecord::Schema.define(version: 20170426064445) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "problems", force: :cascade do |t|
+    t.string   "problem_type"
+    t.integer  "skill_level"
+    t.string   "problem"
+    t.string   "correct_answer"
+    t.string   "user_answer"
+    t.boolean  "correct"
+    t.integer  "workout_id",     null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["workout_id"], name: "index_problems_on_workout_id", using: :btree
+  end
 
   create_table "roles", force: :cascade do |t|
     t.string   "name"
@@ -23,6 +36,15 @@ ActiveRecord::Schema.define(version: 20170425052748) do
     t.datetime "updated_at"
     t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id", using: :btree
     t.index ["name"], name: "index_roles_on_name", using: :btree
+  end
+
+  create_table "skill_levels", force: :cascade do |t|
+    t.string   "problem_type"
+    t.integer  "level"
+    t.integer  "user_id",      null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["user_id"], name: "index_skill_levels_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -43,6 +65,14 @@ ActiveRecord::Schema.define(version: 20170425052748) do
     t.integer "user_id"
     t.integer "role_id"
     t.index ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id", using: :btree
+  end
+
+  create_table "workouts", force: :cascade do |t|
+    t.integer  "progress",   default: 0
+    t.integer  "user_id",                null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.index ["user_id"], name: "index_workouts_on_user_id", using: :btree
   end
 
 end

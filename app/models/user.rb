@@ -2,9 +2,12 @@ class User < ApplicationRecord
   rolify
 	include Trackable
 
-	validates_presence_of :email, :username
-	validates_uniqueness_of :email
-	validates_uniqueness_of :username
+  has_many :workouts
+  has_many :skill_levels
+
+  validates_presence_of :email, :username
+  validates_uniqueness_of :email
+  validates_uniqueness_of :username
 
 	attr_accessor :email_or_username
 
