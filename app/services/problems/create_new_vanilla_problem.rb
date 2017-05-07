@@ -5,9 +5,10 @@ class CreateNewVanillaProblem < ServiceBase
 	end
 
 	def call
-		# TODO CALL ENGINE HERE
-		problem = rand(1..3).to_s + '+' + rand(1..3).to_s
-		answer = eval problem
+		new_problem_hash = VanillaEngine.new(1).generate
+
+		problem = new_problem_hash[:problem].join(' ')
+		answer = new_problem_hash[:answer]
 
 		Problem.create!(category: 'test',
 		                difficulty: 1,
