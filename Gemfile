@@ -57,3 +57,6 @@ group :test do
   gem 'pundit-matchers'
   gem 'shoulda', '~> 3.5'
 end
+group :production, :staging do
+  gem 'rails_12factor'
+end
