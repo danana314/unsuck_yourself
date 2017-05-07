@@ -1,0 +1,6 @@
+h2 New problem form
+
+- # Note: Submiting to the workouts update controller
+= simple_form_for problem, url: workout_path(@workout), method: :patch do |f|
+  = f.input :user_answer, label: false, input_html: {placeholder: 'Your answer'}
+  = f.submit 'Submit'

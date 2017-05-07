@@ -10,7 +10,7 @@ class VanillaEngine < EngineBase
 		# generate(user.skill_level)
 	end
 
-	def generate skill_level
+	def self.generate skill_level
 		# generate and return problem with skill level
 
 		# ... <insert IP here>

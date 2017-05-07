@@ -13,6 +13,11 @@ Rails.application.routes.draw do
 	resources :home, only: [:index]
 
 	resources :users, only: [:edit, :update]
+  namespace :workouts do
+	  resources :complete, only: [:index]
+  end
+  resources :workouts, only: [:new, :show, :update]
+
 
   root 'logins#new'
 
