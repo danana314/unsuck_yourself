@@ -18,7 +18,6 @@ class WorkoutsController < ApplicationController
 			redirect_to workouts_complete_index_path
 		else
 			get_new_problem
-			render action: :show
 		end
 	end
 
@@ -35,7 +34,7 @@ class WorkoutsController < ApplicationController
 	def grade_problem
 		problem = @workout.problems.last
 		user_answer = params.require(:problem)[:user_answer]
-		GradeProblem.new(problem, user_answer).call
+		@old_problem = GradeProblem.new(problem, user_answer).call
 	end
 
 end

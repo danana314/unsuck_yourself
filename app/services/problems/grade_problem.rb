@@ -14,5 +14,6 @@ class GradeProblem < ServiceBase
 		@problem.answered_at = Time.zone.now
 
 		@problem.save!
+		@problem
 	end
 end

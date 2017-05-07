@@ -1,11 +1,6 @@
-h1 Workouts#Show
+.progress data-behavior = 'workout_progress'
+  .progress-bar[role="progressbar" aria-valuenow="#{@workout.progress.to_s}" aria-valuemin="0" aria-valuemax="100" style="width:#{@workout.progress.to_s}%"]
+    = "#{@workout.progress.to_s}% there..."
 
-h3 Workout Progress:
-= @workout.progress.to_s
-
-h3 Question:
-= @problem.problem
-
-= render @problem
-
-
+.card data-behavior = 'workout_question'
+  = render @problem

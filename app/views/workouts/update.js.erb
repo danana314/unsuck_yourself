@@ -1,0 +1,14 @@
+$workout_progress = $("[data-behavior = 'workout_progress']");
+$workout_question = $("[data-behavior = 'workout_question']");
+
+// update progress indicator
+
+<% if @old_problem.correct? %>
+  $workout_progress.trigger('correctAnswerReceived');
+<%else%>
+  $workout_progress.trigger('incorrectAnswerReceived');
+<%end%>
+
+// drop in new problem
+$workout_question.html('<%= j render partial: 'problems/problem', locals: {problem: @problem}%>');
+$('#problem_user_answer').focus();

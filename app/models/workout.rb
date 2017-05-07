@@ -5,9 +5,9 @@ class Workout < ApplicationRecord
 
 	validates_presence_of :user, :progress
 
-	def complete?
-		self.progress >= 100
-	end
+	#######################
+	# Callbacks
+	#######################
 
 	def problem_answered_callback
 		if self.problems.last.correct?
@@ -17,6 +17,14 @@ class Workout < ApplicationRecord
 		end
 
 		self.update_attribute(:progress, progress + increment_amount)
+	end
+
+	#######################
+	# Queries
+	#######################
+
+	def complete?
+		self.progress >= 100
 	end
 
 end

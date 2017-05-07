@@ -7,6 +7,18 @@ class Problem < ApplicationRecord
 
 	after_update :update_workout
 
+	#######################
+	# Queries
+	#######################
+
+	def self.answered
+		where.not(user_answer: nil)
+	end
+
+	def self.correct
+		where(correct: true)
+	end
+
 	private
 
 	def update_workout
