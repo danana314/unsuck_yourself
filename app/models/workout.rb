@@ -13,10 +13,13 @@ class Workout < ApplicationRecord
 		if self.problems.last.correct?
 			increment_amount = 10
 		else
-			increment_amount = 5
+			increment_amount = -5
 		end
 
-		self.update_attribute(:progress, progress + increment_amount)
+		new_progress = self.progress + increment_amount
+		new_progress = 0 if new_progress < 0
+
+		self.update_attribute(:progress, new_progress)
 	end
 
 	#######################

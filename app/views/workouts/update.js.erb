@@ -3,6 +3,9 @@ $workout_question = $("[data-behavior = 'workout_question']");
 
 // update progress indicator
 
+$progress_value = <%= @workout.progress %>
+$workout_progress.attr('data-progress', $progress_value);
+
 <% if @old_problem.correct? %>
   $workout_progress.trigger('correctAnswerReceived');
 <%else%>

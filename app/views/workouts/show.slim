@@ -1,6 +1,7 @@
-.progress data-behavior = 'workout_progress'
-  .progress-bar[role="progressbar" aria-valuenow="#{@workout.progress.to_s}" aria-valuemin="0" aria-valuemax="100" style="width:#{@workout.progress.to_s}%"]
-    = "#{@workout.progress.to_s}% there..."
+= render partial: 'workouts/progress', locals: {progress: @workout.progress}
 
-.card data-behavior = 'workout_question'
-  = render @problem
+
+.row.pt-lg
+  .col-sm-6.offset-sm-3
+    div data-behavior = 'workout_question'
+      = render @problem

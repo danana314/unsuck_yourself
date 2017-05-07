@@ -1,0 +1,3 @@
+.progress.fat data-behavior = 'workout_progress' data-progress = "#{progress.to_s}"
+  .progress-bar.progress-bar-striped.progress-bar-animated.bg-success [role="progressbar" aria-valuenow="#{progress.to_s}" aria-valuemin="0" aria-valuemax="100" style="width:#{progress.to_s}%"]
+    = "#{progress.to_s}% there..."

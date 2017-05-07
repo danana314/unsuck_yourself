@@ -1,4 +1,4 @@
 - # Note: Submiting to the workouts update controller
 = simple_form_for problem, url: workout_path(@workout), method: :patch, remote: true do |f|
   = f.input :user_answer, label: false, input_html: {placeholder: 'Your answer', autofocus: true}
-  = f.submit 'Submit'
+  = f.submit 'Submit', class: 'btn btn-outline'
