@@ -7,13 +7,15 @@ class WorkoutProgressBar
       @progess_bar.bind('incorrectAnswerReceived', @incorrectAnswerUpdate)
 
   correctAnswerUpdate: =>
-    console.log 'answer correct'
-
-
+    @progress_bar_inner = @progess_bar.find('.progress-bar')
+    @progress_bar_inner.addClass('bg-success')
+    @progress_bar_inner.removeClass('bg-danger')
     @updateWidth()
 
   incorrectAnswerUpdate: =>
-    console.log 'answer incorrect'
+    @progress_bar_inner = @progess_bar.find('.progress-bar')
+    @progress_bar_inner.removeClass('bg-success')
+    @progress_bar_inner.addClass('bg-danger')
     @updateWidth()
 
   updateWidth: ->

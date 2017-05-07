@@ -13,5 +13,8 @@ $workout_progress.attr('data-progress', $progress_value);
 <%end%>
 
 // drop in new problem
+
 $workout_question.html('<%= j render partial: 'problems/problem', locals: {problem: @problem}%>');
+$workout_question.find("[data-behavior = 'problem_text']").addClass('animated slideInLeft')
+
 $('#problem_user_answer').focus();

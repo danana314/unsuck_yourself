@@ -7,7 +7,7 @@ class CreateNewVanillaProblem < ServiceBase
 	def call
 		new_problem_hash = VanillaEngine.new(1).generate
 
-		problem = new_problem_hash[:problem].join(' ')
+		problem = new_problem_hash[:problem].join("\n")
 		answer = new_problem_hash[:answer]
 
 		Problem.create!(category: 'test',
