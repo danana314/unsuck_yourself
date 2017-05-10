@@ -1,0 +1,10 @@
+doctype html
+html
+  = render partial: 'layouts/partials/head'
+  body.pt-lg-5 class = "#{controller_name} #{action_name}"
+
+    #alerts
+      = render partial: 'layouts/partials/alerts'
+    .primary-container
+      = yield
+
