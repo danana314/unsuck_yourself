@@ -2,10 +2,16 @@ class Problem < ApplicationRecord
 
 	belongs_to :workout
 
-	validates_presence_of :category, :difficulty, :problem,
+	validates_presence_of :problem_type, :difficulty, :problem,
 	                      :correct_answer, :workout
 
 	after_update :update_workout
+
+	enum problem_type: {
+		addition: 0,
+		subtraction: 1,
+		multiplication: 2
+	}
 
 	#######################
 	# Queries

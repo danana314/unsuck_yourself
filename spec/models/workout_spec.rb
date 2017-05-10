@@ -15,6 +15,7 @@ RSpec.describe Workout, type: :model do
   describe 'Validations' do
     it {should validate_presence_of(:user)}
     it {should validate_presence_of(:progress)}
+    it {should validate_presence_of(:workout_type)}
   end
 
 end

@@ -10,13 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170426064445) do
+ActiveRecord::Schema.define(version: 20170510095902) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "problems", force: :cascade do |t|
-    t.string   "category"
     t.integer  "difficulty"
     t.text     "problem"
     t.string   "correct_answer"
@@ -26,6 +25,7 @@ ActiveRecord::Schema.define(version: 20170426064445) do
     t.integer  "workout_id",     null: false
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.integer  "problem_type"
     t.index ["workout_id"], name: "index_problems_on_workout_id", using: :btree
   end
 
@@ -69,11 +69,12 @@ ActiveRecord::Schema.define(version: 20170426064445) do
   end
 
   create_table "workouts", force: :cascade do |t|
-    t.integer  "progress",    default: 0
-    t.integer  "user_id",                 null: false
+    t.integer  "progress",     default: 0
+    t.integer  "user_id",                  null: false
     t.datetime "finished_at"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.integer  "workout_type"
     t.index ["user_id"], name: "index_workouts_on_user_id", using: :btree
   end
 

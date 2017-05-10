@@ -1,7 +1,8 @@
 class WorkoutsController < ApplicationController
 
 	def new
-		@workout = Workout.create!(user: current_user)
+		@workout = Workout.create!(user: current_user,
+		                           workout_type: Workout.workout_types[:mixed])
 		redirect_to workout_path @workout
 	end
 

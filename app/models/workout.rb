@@ -3,7 +3,14 @@ class Workout < ApplicationRecord
 	belongs_to :user
 	has_many :problems
 
-	validates_presence_of :user, :progress
+	validates_presence_of :user, :progress, :workout_type
+
+	enum workout_type: {
+		mixed: 0,
+		addition: 1,
+	  subtraction: 2,
+	  multiplication: 3
+	}
 
 	#######################
 	# Callbacks
