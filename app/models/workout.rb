@@ -37,4 +37,8 @@ class Workout < ApplicationRecord
 		self.progress >= 100
 	end
 
+	def self.completed
+		where('progress >= 100')
+	end
+
 end

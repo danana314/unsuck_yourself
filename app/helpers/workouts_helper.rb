@@ -2,6 +2,9 @@ module WorkoutsHelper
 
 	def workout_summary workout
 		total_problems = workout.problems.answered.count
+
+		return '' if total_problems == 0
+
 		total_correct = workout.problems.answered.correct.count
 		correct_percentage = ((total_correct.to_f/total_problems.to_f) * 100).round
 

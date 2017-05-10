@@ -1,14 +1,14 @@
 class VanillaEngine < EngineBase
 
   def initialize problem_type_symbol, skill_level
-    @problem_type_symbol = problem_type_symbol
-    @skill_level = skill_level
-	end
+    @problem_type_symbol, @skill_level = problem_type_symbol, skill_level
+    check_problem_type_symbol
+  end
 
 	def generate
-    operand1 = rand(1..10).to_s
+    operand1 = get_operand @problem_type_symbol, @skill_level
     operator = get_operator @problem_type_symbol
-    operand2 = rand(1..10).to_s
+    operand2 = get_operand @problem_type_symbol, @skill_level
     expression = [operand1, operator, operand2]
     answer = evaluate_expression expression.join
     { problem: expression, answer: answer }
@@ -16,8 +16,21 @@ class VanillaEngine < EngineBase
 
 	private
 
+  def get_operand problem_type_symbol, skill_level
+    case problem_type_symbol
+      when :addition
+        # TODO, make number relative to skill_level
+        rand(1..100).to_s
+      when :subtraction
+        rand(1..100).to_s
+      when :multiplication
+        rand(1..12).to_s
+      else
+        raise "problem type :#{problem_type_symbol} exists but not defined in VanillaEngine#get_operand. Unsuck YOURSELF"
+    end
+  end
+
   def get_operator problem_type_symbol
-    raise "problem type :#{problem_type_symbol} not valid" unless Problem.problem_types.keys.include? problem_type_symbol.to_s
     case problem_type_symbol
       when :addition
         '+'
@@ -26,7 +39,7 @@ class VanillaEngine < EngineBase
       when :multiplication
         '*'
       else
-        raise "problem type :#{problem_type_symbol} exists but not defined in VanillaEngine! Unsuck YOURSELF"
+        raise "problem type :#{problem_type_symbol} exists but not defined in VanillaEngine#get_operator. Unsuck YOURSELF"
     end
   end
 
@@ -37,9 +50,15 @@ class VanillaEngine < EngineBase
           raise 'Only digits and mathematical operators allowed...whatchu tryna do?'
       end
   end
+
   def valid_syntax? expr
       # Only allow digits and +-*/
       pattern = /[^\d\+\-\*\/\(\)]/
       expr.scan(pattern).empty?
   end
+
+  def check_problem_type_symbol
+    raise "problem type :#{problem_type_symbol} not valid" unless Problem.problem_types.keys.include? @problem_type_symbol.to_s
+  end
+
 end

@@ -5,15 +5,30 @@ class GetNewWorkoutProblem < ServiceBase
 	end
 
 	def call
+		case @workout.workout_type
 
-		# Check workout type
+			when 'mixed'
+				if @workout.progress < 33
+					problem = CreateNewVanillaProblem.new(@workout, :addition).call
+				elsif @workout.progress < 66
+					problem = CreateNewVanillaProblem.new(@workout, :subtraction).call
+				else
+					problem = CreateNewVanillaProblem.new(@workout, :multiplication).call
+				end
 
-			# If mixed, change type depending on progress
+			when 'addition'
+	      problem = CreateNewVanillaProblem.new(@workout, :addition).call
 
-			# Otherwise, create problem accordingly
+			when 'subtraction'
+				problem = CreateNewVanillaProblem.new(@workout, :subtraction).call
 
-		# TODO, call correct problem generator depending on how far through the workout
-		problem = CreateNewVanillaProblem.new(@workout, :addition).call
+			when 'multiplication'
+				problem = CreateNewVanillaProblem.new(@workout, :multiplication).call
+
+			else
+				raise "workout type :#{@workout.workout_type} not defined yet in GetNewWorkoutProblem!"
+
+		end
 	end
 
 end

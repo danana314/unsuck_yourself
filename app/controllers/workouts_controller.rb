@@ -1,8 +1,10 @@
 class WorkoutsController < ApplicationController
 
 	def new
+		requested_workout = params[:workout_type]
+		requested_workout = :mixed unless Workout.workout_types.include? requested_workout
 		@workout = Workout.create!(user: current_user,
-		                           workout_type: Workout.workout_types[:mixed])
+		                           workout_type: Workout.workout_types[requested_workout.to_sym])
 		redirect_to workout_path @workout
 	end
 

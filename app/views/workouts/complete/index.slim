@@ -1,4 +1,25 @@
-= workout_summary @workout
 
-h1
-  = link_to 'Go again', new_workout_path
+- summary = workout_summary @workout if @workout
+
+- unless summary.blank?
+  .card.text-center.p-lg.bg-gray-lighter
+    = summary
+
+.row.col-sm-6.offset-sm-3.pt-lg.text-center
+  = link_to 'Go again', new_workout_path, class: 'btn btn-primary btn-lg btn-block'
+
+  .text-center
+    h1.pt-lg OR
+    h4.pb-lg try a specific type of math un-sucking workout
+
+  = link_to new_workout_path(workout_type: 'addition'), class: 'btn btn-outline-primary btn-lg btn-block' do
+    span.fa.fa-plus.mr
+    | Addition only
+
+  = link_to new_workout_path(workout_type: 'subtraction'), class: 'btn btn-outline-primary btn-lg btn-block'
+    span.fa.fa-minus.mr
+    | Subtraction only
+
+  = link_to new_workout_path(workout_type: 'multiplication'), class: 'btn btn-outline-primary btn-lg btn-block'
+    span.fa.fa-times.mr
+    | Multiplication only
