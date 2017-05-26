@@ -1,6 +1,6 @@
 default: &default
  adapter: postgresql
- encoding: unicode
+ encoding: utf8
  pool: 5
  username: <%= ENV['UY_DATABASE_USER'] %>
  password: <%= ENV['UY_DATABASE_PASSWORD'] %>
@@ -13,3 +13,9 @@ development:
 test:
   <<: *default
   database: uy_database_test
+
+production:
+  adapter: postgresql
+  encoding: utf8
+  pool: 5
+  url: <%= ENV["DATABASE_URL"]%>
