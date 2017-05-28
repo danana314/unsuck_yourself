@@ -84,6 +84,7 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
+
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     :authentication => :plain,
@@ -91,7 +92,12 @@ Rails.application.configure do
     :port => 587,
     :domain => "unsuckyourself.com",
     :user_name => "postmaster@unsuckyourself.com",
-    :password => ENV["SMTP_PASSWORD"]
+    :password => "40fcf14eface6a1b8ccfcc3623bc844b"
   }
+
+  config.action_mailer.default_url_options = { :host => 'unsuckyourself.com', :port=>'80', :only_path => false }
+  config.action_mailer.asset_host = 'unsuckyourself.com'
+  config.action_controller.asset_host = 'unsuckyourself.com'
+
 
 end
