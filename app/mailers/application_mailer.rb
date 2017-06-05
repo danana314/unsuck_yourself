@@ -1,5 +1,5 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'no-reply@unsuckyourself.com'
+  default from: 'UnsuckYourself at Math'
   layout 'mailer'
 
 
