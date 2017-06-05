@@ -24,7 +24,7 @@ gem 'bootstrap-sass'
 gem "font-awesome-rails"
 gem 'simple_form'
 
-gem "lograge"
+# gem "lograge"
 
 gem "rolify"
 gem 'seedbank', '~> 0.4.0'
