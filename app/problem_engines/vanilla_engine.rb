@@ -58,7 +58,7 @@ class VanillaEngine < EngineBase
   end
 
   def check_problem_type_symbol
-    raise "problem type :#{problem_type_symbol} not valid" unless Problem.problem_types.keys.include? @problem_type_symbol.to_s
+    raise "problem type :#{@problem_type_symbol} not valid" unless Problem.problem_types.keys.include? @problem_type_symbol.to_s
   end
 
 end

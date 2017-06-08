@@ -1,0 +1,12 @@
+# See http://www.thesitewizard.com/general/set-cron-job.shtml for example on how to define periodic tasks with cron
+# All times are in UTC, so need to convert to NZD (add 13 hours to CRON time to get NZ time)
+
+test_cron_job:
+  cron: "0 22 * * *"    # At 22UTC
+  class: "TestCronJob"
+  active_job: true
+
+sign_in_nudge_email_job:
+  cron: "0 20 * * *"    # At 22UTC
+  class: "SignInNudgeEmailJob"
+  active_job: true

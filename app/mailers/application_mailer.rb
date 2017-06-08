@@ -12,4 +12,11 @@ class ApplicationMailer < ActionMailer::Base
       :text => "Congratulations Dan Lawler, you just sent an email with Mailgun!  You are truly awesome!"
   end
 
+  def generic_email(args = {})
+
+    @user, @details, @title = args[:user], args[:details], args[:title]
+
+    mail to: @user.email, subject: @title
+  end
+
 end

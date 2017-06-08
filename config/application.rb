@@ -29,5 +29,8 @@ module UnsuckYourself
 
     config.sass.preferred_syntax = :sass
 
+    # We want to integrated sidekiq with active job (part of rails 4.0)
+    config.active_job.queue_adapter = :sidekiq
+
   end
 end

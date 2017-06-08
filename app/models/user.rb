@@ -25,4 +25,7 @@ class User < ApplicationRecord
 		self.add_role :admin
 	end
 
+	def generate_new_login_token!
+		self.update!(login_token: SecureRandom.urlsafe_base64, login_token_valid_until: Time.now + 15.minutes)
+	end
 end
