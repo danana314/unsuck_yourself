@@ -2,7 +2,7 @@
 # All times are in UTC, so need to convert to NZD (add 13 hours to CRON time to get NZ time)
 
 test_cron_job:
-  cron: "0 22 * * *"    # At 22UTC
+  cron: "0 21 * * *"    # At 22UTC
   class: "TestCronJob"
   active_job: true
 
